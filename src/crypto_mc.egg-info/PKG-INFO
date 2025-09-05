@@ -1,0 +1,84 @@
+Metadata-Version: 2.4
+Name: crypto-mc
+Version: 0.1.0
+Summary: Monte Carlo risk & scenario simulation toolkit for crypto time series
+Author-email: You <you@example.com>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pandas>=2.0
+Requires-Dist: numpy>=1.25
+Requires-Dist: scipy>=1.11
+Requires-Dist: tqdm>=4.66
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: statsmodels>=0.14
+Requires-Dist: arch>=6.4
+Requires-Dist: matplotlib>=3.8
+
+# Monte Carlo Simulation Results (GARCH Model)
+
+This document summarizes and explains the output of a Monte Carlo simulation performed on **Bitcoin (BTC)** using a **GARCH (Generalized Autoregressive Conditional Heteroskedasticity)** model. The simulation covered a horizon of **365 days** with **50,000 simulated paths**.
+
+---
+
+## Simulation Parameters
+- **Model:** GARCH (1,1)
+- **Number of paths:** 50,000
+- **Time horizon:** 365 days (1 year)
+
+---
+
+## Results Overview
+
+### Value at Risk (VaR)
+- **95% VaR:** 0.973  
+- **99% VaR:** 1.781  
+
+Interpretation: With 95% confidence, the worst expected log-return loss does not exceed ~0.97. In a 1-in-100 scenario, the loss could be as extreme as ~1.78. VaR provides a threshold for potential losses under adverse market conditions.
+
+---
+
+### Conditional Value at Risk (CVaR / Expected Shortfall)
+- **95% CVaR:** 1.495  
+- **99% CVaR:** 2.350  
+
+Interpretation: While VaR shows the cutoff, **CVaR measures the average of losses beyond that cutoff**. At the 95% level, the average extreme loss is ~1.50, and at the 99% level it is ~2.35. This metric gives a more conservative and realistic view of tail risk.
+
+---
+
+### Expected Log Return
+- **0.633**
+
+Interpretation: On average, across all simulated paths, the model projects a positive log-return, indicating **overall growth potential** despite volatility and downside risks.
+
+---
+
+### Probability of Loss
+- **25.16%**
+
+Interpretation: There is about a **one-in-four chance** that the final portfolio value after 365 days ends below the starting value.
+
+---
+
+### Average Maximum Drawdown
+- **-57.45%**
+
+Interpretation: The typical path experiences a maximum peak-to-trough decline of **57%**. This highlights the **severity of intra-year volatility** in crypto markets.
+
+---
+
+### Ruin Probability (50% Threshold)
+- **25.18%**
+
+Interpretation: There is roughly a **25% probability** that the portfolio value falls to **below half its initial level** at some point during the year.
+
+---
+
+## Key Insights
+- The GARCH model captures **time-varying volatility**, which is well-suited for highly volatile assets like Bitcoin.  
+- Despite a positive average return, downside risk is significant: **high drawdowns and heavy-tail losses** occur in a substantial fraction of paths.  
+- Risk management strategies (stop-losses, diversification, position sizing) are essential when trading or investing in such volatile assets.
+
+---
+
+## Conclusion
+This simulation shows that while the **expected return is positive**, the **risks are severe**. Investors and traders must account for extreme drawdowns and significant probabilities of large losses when dealing with crypto assets. The results reinforce the dual nature of crypto markets: **high growth potential** but also **substantial downside risk**.

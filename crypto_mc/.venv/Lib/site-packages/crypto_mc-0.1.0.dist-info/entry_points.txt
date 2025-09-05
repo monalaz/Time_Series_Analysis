@@ -1,0 +1,2 @@
+[console_scripts]
+crypto-mc = crypto_mc.cli:main

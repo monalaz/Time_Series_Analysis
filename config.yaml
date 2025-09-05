@@ -1,0 +1,25 @@
+
+# Default configuration
+data_path: "./crypto_mc/data/raw"
+output_path: "./crypto_mc/outputs"
+date_column: "Date"
+price_column: "Close"
+symbol_column: "Symbol"
+bootstrap:
+  block_size: 5        # days for block bootstrap
+  method: "moving"     # moving or stationary
+risk:
+  var_levels: [0.95, 0.99]
+  cvar_levels: [0.95, 0.99]
+models:
+  gbm:
+    use_ewma_vol: true
+    ewma_lambda: 0.94
+  garch:
+    p: 1
+    o: 0
+    q: 1
+  jump_diffusion:
+    jump_intensity: null   # auto-calibrate if null
+    jump_mu: null          # auto-calibrate if null
+    jump_sigma: null       # auto-calibrate if null
